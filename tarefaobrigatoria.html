@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarefa obrigatória</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<style>
+    #botvoltar{
+        text-align: center;
+         color: #1d3557;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: ghostwhite;
+        height: 40px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-top: 10px;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgb(0, 0, 0);
+        text-decoration: none;
+        }
+    .fundo{
+        display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 30px;
+    }
+    .semana{
+        text-shadow: 1px 1px 5px #ffffff;
+        padding: 2px;
+        color: rgb(57, 109, 241);
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .meio{
+        background-color: #E57E2B;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;  
+        text-align: center;
+        align-self: normal;   
+        width: fit-content; 
+        height: fit-content;
+        padding-bottom: 10px;
+        margin-top: 10px;
+               
+        }
+
+    .tituloto {
+        color: #E57E2B;
+        text-shadow: 1px 1px 5px #ff0000;
+        font-size: 30px;
+        text-align: center;
+        align-self: normal;
+        width: fit-content;
+    }
+   
+    .checkbox-container {
+    background-color: rgb(146, 198, 244);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    align-self: normal;
+    margin-top: 15px;
+    border-radius: 10px;
+    height: fit-content;
+    width:auto;
+    box-shadow: 1px 1px 5px #000000;
+    
+    }
+
+    .checkbox-label {
+        text-shadow: 1px 1px 5px #000000;
+        padding-right: 10px;
+        color: white;
+        font-size: 20px;
+        
+    }
+
+    .checkbox {
+        margin-right: 10px;
+        transform: scale(1);
+        margin-top: 15px;
+        vertical-align:top;
+            }
+</style>
+
+<script>
+     // Função para salvar as checkboxes localmente
+    function salvarCheckboxes() {
+        var checkboxes = document.querySelectorAll('.checkbox');
+        var diasSelecionados = [];
+
+        checkboxes.forEach(function (checkbox) {
+            diasSelecionados.push({
+                dia: checkbox.id,
+                concluido: checkbox.checked
+            });
+        });
+
+        // Armazenar localmente os dias selecionados
+        localStorage.setItem('diasSelecionados', JSON.stringify(diasSelecionados));
+    }
+
+    // Função para carregar as checkboxes salvas localmente
+    function carregarCheckboxesSalvas() {
+        var checkboxes = document.querySelectorAll('.checkbox');
+        var diasSelecionados = JSON.parse(localStorage.getItem('diasSelecionados')) || [];
+
+        diasSelecionados.forEach(function (diaSelecionado) {
+            var checkbox = document.getElementById(diaSelecionado.dia);
+            if (checkbox) {
+                checkbox.checked = diaSelecionado.concluido;
+            }
+        });
+    }
+
+    // Chame a função ao carregar a página
+    window.onload = function () {
+        carregarCheckboxesSalvas();
+    }
+</script>
+
+<body>
+    <div class="fundo">
+    <label class="tituloto"> Tarefa Obrigatória (TOs) &#128200;</label>
+        <div class="meio">     
+                <div class="checkbox-container">
+                    <!-- Semana 1 -->
+                    <label class="semana"> &#128205; Semana 1</label>
+                    <br>
+                    <label for="segunda1" class="checkbox-label">Segunda</label>
+                    <input type="checkbox" id="segunda1" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="terca1" class="checkbox-label">Terça</label>
+                    <input type="checkbox" id="terca1" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="quarta1" class="checkbox-label">Quarta</label>
+                    <input type="checkbox" id="quarta1" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="quinta1" class="checkbox-label">Quinta</label>
+                    <input type="checkbox" id="quinta1" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="sexta1" class="checkbox-label">Sexta</label>
+                    <input type="checkbox" id="sexta1" class="checkbox" onchange="salvarCheckboxes()">
+                </div>
+                
+                    <!-- Semana 2 -->
+                    <div class="checkbox-container">
+                        <label class="semana"> &#128205; Semana 2</label>
+                    <br>
+                    <label for="segunda2" class="checkbox-label">Segunda</label>
+                    <input type="checkbox" id="segunda2" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="terca2" class="checkbox-label">Terça</label>
+                    <input type="checkbox" id="terca2" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="quarta2" class="checkbox-label">Quarta</label>
+                    <input type="checkbox" id="quarta2" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="quinta2" class="checkbox-label">Quinta</label>
+                    <input type="checkbox" id="quinta2" class="checkbox" onchange="salvarCheckboxes()">
+                    <label for="sexta2" class="checkbox-label">Sexta</label>
+                    <input type="checkbox" id="sexta2" class="checkbox" onchange="salvarCheckboxes()">
+                    
+                </div>
+                <!-- Semana 3 -->
+                <div class="checkbox-container">
+                    <label class="semana"> &#128205; Semana 3</label>
+                    <br>
+                <label for="segunda3" class="checkbox-label">Segunda</label>
+                <input type="checkbox" id="segunda3" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="terca3" class="checkbox-label">Terça</label>
+                <input type="checkbox" id="terca3" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quarta3" class="checkbox-label">Quarta</label>
+                <input type="checkbox" id="quarta3" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quinta3" class="checkbox-label">Quinta</label>
+                <input type="checkbox" id="quinta3" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="sexta3" class="checkbox-label">Sexta</label>
+                <input type="checkbox" id="sexta3" class="checkbox" onchange="salvarCheckboxes()">
+                </div>
+                <!-- Semana 4 -->
+                <div class="checkbox-container">
+                    <label class="semana"> &#128205; Semana 4</label>
+                        <br>
+                <label for="segunda4" class="checkbox-label">Segunda</label>
+                <input type="checkbox" id="segunda4" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="terca4" class="checkbox-label">Terça</label>
+                <input type="checkbox" id="terca4" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quarta4" class="checkbox-label">Quarta</label>
+                <input type="checkbox" id="quarta4" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quinta4" class="checkbox-label">Quinta</label>
+                <input type="checkbox" id="quinta4" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="sexta4" class="checkbox-label">Sexta</label>
+                <input type="checkbox" id="sexta4" class="checkbox" onchange="salvarCheckboxes()">            
+                </div>
+
+    
+        </div>
+
+        <div class="meio">     
+            <div class="checkbox-container">
+                <!-- Semana 5 -->
+                <label class="semana"> &#128205; Semana 5</label>
+                <br>
+                <label for="segunda5" class="checkbox-label">Segunda</label>
+                <input type="checkbox" id="segunda5" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="terca5" class="checkbox-label">Terça</label>
+                <input type="checkbox" id="terca5" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quarta5" class="checkbox-label">Quarta</label>
+                <input type="checkbox" id="quarta5" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quinta5" class="checkbox-label">Quinta</label>
+                <input type="checkbox" id="quinta5" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="sexta5" class="checkbox-label">Sexta</label>
+                <input type="checkbox" id="sexta5" class="checkbox" onchange="salvarCheckboxes()">
+            </div>
+            
+                <!-- Semana 6 -->
+                <div class="checkbox-container">
+                    <label class="semana"> &#128205; Semana 6</label>
+                <br>
+                <label for="segunda6" class="checkbox-label">Segunda</label>
+                <input type="checkbox" id="segunda6" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="terca6" class="checkbox-label">Terça</label>
+                <input type="checkbox" id="terca6" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quarta6" class="checkbox-label">Quarta</label>
+                <input type="checkbox" id="quarta6" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="quinta6" class="checkbox-label">Quinta</label>
+                <input type="checkbox" id="quinta6" class="checkbox" onchange="salvarCheckboxes()">
+                <label for="sexta6" class="checkbox-label">Sexta</label>
+                <input type="checkbox" id="sexta6" class="checkbox" onchange="salvarCheckboxes()">
+                
+            </div>
+            <!-- Semana 7 -->
+            <div class="checkbox-container">
+                <label class="semana"> &#128205; Semana 7</label>
+                <br>
+            <label for="segunda7" class="checkbox-label">Segunda</label>
+            <input type="checkbox" id="segunda7" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="terca7" class="checkbox-label">Terça</label>
+            <input type="checkbox" id="terca7" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="quarta7" class="checkbox-label">Quarta</label>
+            <input type="checkbox" id="quarta7" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="quinta7" class="checkbox-label">Quinta</label>
+            <input type="checkbox" id="quinta7" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="sexta7" class="checkbox-label">Sexta</label>
+            <input type="checkbox" id="sexta7" class="checkbox" onchange="salvarCheckboxes()">
+            </div>
+            <!-- Semana 8 -->
+            <div class="checkbox-container">
+                <label class="semana"> &#128205; Semana 8</label>
+                    <br>
+            <label for="segunda8" class="checkbox-label">Segunda</label>
+            <input type="checkbox" id="segunda8" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="terca8" class="checkbox-label">Terça</label>
+            <input type="checkbox" id="terca8" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="quarta8" class="checkbox-label">Quarta</label>
+            <input type="checkbox" id="quarta8" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="quinta8" class="checkbox-label">Quinta</label>
+            <input type="checkbox" id="quinta8" class="checkbox" onchange="salvarCheckboxes()">
+            <label for="sexta8" class="checkbox-label">Sexta</label>
+            <input type="checkbox" id="sexta8" class="checkbox" onchange="salvarCheckboxes()">            
+            </div>
+
+
+    </div>
+    <input id="botvoltar" type='button' value='Voltar' onclick="window.location.href='index.html';" />
+    </div>
+</body>
+
+</html>
